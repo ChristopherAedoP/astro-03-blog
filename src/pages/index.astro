@@ -4,8 +4,10 @@ import { siteConfig } from '../config/site-config';
 import { getCollection } from 'astro:content';
 import TypeBlogPost from '@/components/TypeBlogPost.astro';
 
-const blogPosts = await getCollection('blog');
-
+const blogPosts = await getCollection(
+	'blog',
+	(post) => post.data.isDraft === false
+);
 ---
 
 <Layout title="Christopher Blog">
@@ -17,9 +19,19 @@ const blogPosts = await getCollection('blog');
 				{siteConfig.title}
 			</h1>
 
+			<a class="mr-2" href="/blog/1">Blog Paginado</a>
+			<a class="mr-2" href="/authors">Autores</a>
+
 			<div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
 				{blogPosts.map((post) => <TypeBlogPost post={post} />)}
 			</div>
 		</div>
 	</section>
 </Layout>
+
+<style>
+	@reference '@styles/global.css';
+	a {
+		@apply text-blue-500 cursor-pointer hover:underline;
+	}
+</style>
