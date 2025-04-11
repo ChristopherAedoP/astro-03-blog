@@ -7,7 +7,7 @@ image: 'images/post-01.png'
 tags: [JavaScript, ES6, Programming]
 ---
 
-# {frontmatter.title} 
+# Explorando Funciones de ES6
 
 JavaScript ES6 introdujo varias funciones nuevas que han hecho que la codificación en JavaScript sea más eficiente y agradable. Vamos a explorar algunas de estas funciones.
 
