@@ -3,8 +3,24 @@ import Layout from '../layouts/Layout.astro';
 import BlogPost from '../components/BlogPost.astro';
 
 import { siteConfig } from '../config/site-config';
+//v4
+//const post = await Astro.glob('./posts/**/*.{md,mdx}');
 
-const post = await Astro.glob('./posts/**/*.{md,mdx}');
+//v5
+type BlogPostData = {
+	frontmatter: {
+		title: string;
+		description: string;
+		date: string;
+		image: string;
+	};
+	url: string;
+};
+// Carga todos los archivos MD/MDX de la carpeta "posts" y subcarpetas
+const allPosts = import.meta.glob('./posts/**/*.{md,mdx}', { eager: true });
+
+// Transformamos el objeto en un array de posts
+const post = Object.values(allPosts) as BlogPostData[];;
 ---
 
 <Layout title="Christopher Blog">

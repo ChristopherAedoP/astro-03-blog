@@ -1,7 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-import './src/styles/global.css';
-import './src/styles/blog.css';
+import '@styles/global.css';
+import '@styles/blog.css';
 
 const { title, ...rest } = Astro.props;
 ---
@@ -19,7 +19,7 @@ const { title, ...rest } = Astro.props;
 	<body class="bg-gray-900">
 		<a href="/" id="btn-back">Regresar</a>
 
-		<main class="md-10 mx-w-5xl m-auto px-2 py-2"> 
+		<main class="md-10 mx-w-5xl m-auto px-2 py-2">
 			<slot />
 		</main>
 	</body>
